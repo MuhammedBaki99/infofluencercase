@@ -13,6 +13,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast, Toaster } from "sonner";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Mail, Lock } from "lucide-react";
 
 export default function Login() {
   const [error, setError] = useState("");
@@ -33,7 +35,7 @@ export default function Login() {
 
   return (
     <motion.div
-      className="flex justify-center items-center h-screen"
+      className="w-full flex justify-between items-center h-screen"
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -44,54 +46,68 @@ export default function Login() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
-        <Card className="w-80 bg-transparent shadow-none border-none">
+        <Card className="w-96 bg-transparent shadow-none border-none">
           <CardHeader>
-            <CardTitle className="text-center">Giriş Yap</CardTitle>
+            <CardTitle className="text-center text-2xl">Giriş Yap</CardTitle>
           </CardHeader>
           <CardContent>
             <motion.form
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-6"
               onSubmit={handleSubmit}
               initial={false}
               animate={{}}
             >
               <motion.div
-                className="flex flex-col gap-1"
+                className="flex flex-col gap-2"
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email adresinizi girin"
-                  required
-                />
+                <Label htmlFor="email" className="text-lg">Email</Label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <Mail className="w-6 h-6" />
+                  </span>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email adresinizi girin"
+                    required
+                    className="h-14 text-lg pl-12 pr-5"
+                  />
+                </div>
               </motion.div>
               <motion.div
-                className="flex flex-col gap-1"
+                className="flex flex-col gap-2"
                 initial={{ x: 30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <Label htmlFor="password">Şifre</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Şifrenizi girin"
-                  required
-                />
+                <Label htmlFor="password" className="text-lg">Şifre</Label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <Lock className="w-6 h-6" />
+                  </span>
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Şifrenizi girin"
+                    required
+                    className="h-14 text-lg pl-12 pr-5"
+                  />
+                </div>
               </motion.div>
-              {/* Hata mesajı artık sonner ile gösteriliyor */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <Button type="submit" className="w-full">
+                <Button
+                  type="submit"
+                  className="w-full h-14 text-lg"
+                >
                   Giriş Yap
                 </Button>
               </motion.div>
@@ -99,6 +115,7 @@ export default function Login() {
           </CardContent>
         </Card>
       </motion.div>
+      <Image src={"/login.png"} width={500} height={1000} alt="influencer login fotoğrafı" className="w-2/3 h-full" />
     </motion.div>
   );
 }

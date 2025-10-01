@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
- 
+
 
 @theme inline {
   --color-background: var(--background);
@@ -115,7 +115,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-} 
+}
+
+::selection {
+  background: #000;
+  color: white;
+}

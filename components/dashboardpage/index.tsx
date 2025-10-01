@@ -43,7 +43,7 @@ const followersData = [
 export default function DashboardPage() {
   return (
     <motion.div
-      className="p-8"
+      className="w-full p-3 md:p-8"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -85,7 +85,7 @@ export default function DashboardPage() {
         ))}
       </motion.div>
       <motion.div
-        className="bg-white rounded-xl shadow border border-gray-100 p-6 mt-4"
+        className="bg-white rounded-xl shadow border border-gray-100 p-2 md:p-6 mt-4 w-full"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
