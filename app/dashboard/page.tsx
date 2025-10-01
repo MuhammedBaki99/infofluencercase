@@ -1,9 +1,10 @@
-import DBHeader from "@/components/dbheader";
+import DashboardPage from "@/components/dashboardpage";
 
+ 
 export default function Dashboard() {
   return (
-    <div>
-      <DBHeader />
+    <div>   
+      <DashboardPage />
     </div>
   );
 }
