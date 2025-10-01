@@ -17,7 +17,6 @@ import Image from "next/image";
 import { Mail, Lock } from "lucide-react";
 
 export default function Login() {
-  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +27,6 @@ export default function Login() {
     if (email === "test@test.com" && password === "1234") {
       router.push("/dashboard");
     } else {
-      setError("Email veya şifre hatalı.");
       toast.error("Email veya şifre hatalı.");
     }
   };
@@ -46,7 +44,7 @@ export default function Login() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
-        <Card className="w-96 bg-transparent shadow-none border-none">
+        <Card className="absolute md:relative top-1/2 md:top-0 md:left-0 left-1/2 transform -translate-1/2 md:translate-0 w-96 bg-transparent shadow-none border-none  backdrop-blur-xs">
           <CardHeader>
             <CardTitle className="text-center text-2xl">Giriş Yap</CardTitle>
           </CardHeader>
@@ -114,8 +112,21 @@ export default function Login() {
             </motion.form>
           </CardContent>
         </Card>
-      </motion.div>
-      <Image src={"/login.png"} width={500} height={1000} alt="influencer login fotoğrafı" className="w-2/3 h-full" />
+      </motion.div> 
+        <Image
+          src="/login.png"
+          width={500}
+          height={1000}
+          alt="influencer login fotoğrafı"
+          className="hidden md:block w-full h-full object-cover"
+        />
+        <Image
+          src="/mobillogin.png"
+          width={500}
+          height={1000}
+          alt="influencer login fotoğrafı"
+          className="block md:hidden w-full h-full object-cover"
+        /> 
     </motion.div>
   );
 }
